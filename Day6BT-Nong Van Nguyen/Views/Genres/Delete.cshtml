@@ -1,0 +1,28 @@
+@model Day6BT_Nong_Van_Nguyen.Models.Genre
+
+@{
+    ViewData["Title"] = "Xóa";
+}
+
+<h1>Xóa</h1>
+
+<h3>Anh có chắc muốn xóa bản ghi này?</h3>
+<div>
+    <h4>Thể loại</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="Index">Về danh sách</a>
+    </form>
+</div>

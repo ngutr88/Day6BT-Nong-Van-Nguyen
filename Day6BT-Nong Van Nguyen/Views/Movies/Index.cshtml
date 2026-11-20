@@ -1,0 +1,71 @@
+@model IEnumerable<Day6BT_Nong_Van_Nguyen.Models.Movie>
+
+@{
+    ViewData["Title"] = "Danh sách";
+}
+
+<h1>Danh sách</h1>
+
+<p>
+    <a asp-action="Create">Thêm mới</a>
+</p>
+<form method="get" asp-action="Index" class="row g-2 mb-3">
+    <div class="col-md-5">
+        <label for="searchString" class="form-label">Tên phim</label>
+        <input id="searchString" name="searchString" value="@ViewData["SearchString"]" class="form-control" placeholder="Nhập tên phim..." />
+    </div>
+    <div class="col-md-4">
+        <label for="genreId" class="form-label">Thể loại</label>
+        <select id="genreId" name="genreId" asp-items="ViewBag.GenreId" class="form-select"><option value="">Tất cả thể loại</option></select>
+    </div>
+    <div class="col-md-3 align-self-end">
+        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Đặt lại</a>
+    </div>
+</form>
+@if (!Model.Any())
+{
+    <p class="alert alert-info">Không tìm thấy phim nào.</p>
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre!.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Chi tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
