@@ -1,31 +1,31 @@
 @model IEnumerable<Day6BT_Nong_Van_Nguyen.Models.Movie>
 
 @{
-    ViewData["Title"] = "Danh sách";
+    ViewData["Title"] = "Movies";
 }
 
-<h1>Danh sách</h1>
+<h1>Movies</h1>
 
 <p>
-    <a asp-action="Create">Thêm mới</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <form method="get" asp-action="Index" class="row g-2 mb-3">
     <div class="col-md-5">
-        <label for="searchString" class="form-label">Tên phim</label>
-        <input id="searchString" name="searchString" value="@ViewData["SearchString"]" class="form-control" placeholder="Nhập tên phim..." />
+        <label for="searchString" class="form-label">Title</label>
+        <input id="searchString" name="searchString" value="@ViewData["SearchString"]" class="form-control" placeholder="Enter a movie title..." />
     </div>
     <div class="col-md-4">
-        <label for="genreId" class="form-label">Thể loại</label>
-        <select id="genreId" name="genreId" asp-items="ViewBag.GenreId" class="form-select"><option value="">Tất cả thể loại</option></select>
+        <label for="genreId" class="form-label">Genre</label>
+        <select id="genreId" name="genreId" asp-items="ViewBag.GenreId" class="form-select"><option value="">All genres</option></select>
     </div>
     <div class="col-md-3 align-self-end">
-        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-        <a asp-action="Index" class="btn btn-outline-secondary">Đặt lại</a>
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Reset</a>
     </div>
 </form>
 @if (!Model.Any())
 {
-    <p class="alert alert-info">Không tìm thấy phim nào.</p>
+    <p class="alert alert-info">No movies found.</p>
 }
 <table class="table table-striped">
     <thead>
@@ -61,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.Genre!.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Sửa</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Chi tiết</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

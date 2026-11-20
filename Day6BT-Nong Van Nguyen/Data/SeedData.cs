@@ -10,9 +10,9 @@ public static class SeedData
         var context = services.GetRequiredService<AppDbContext>();
         if (await context.Genres.AnyAsync() || await context.Movies.AnyAsync()) return;
 
-        var comedy = new Genre { Name = "Hài" };
-        var action = new Genre { Name = "Hành động" };
-        var animation = new Genre { Name = "Hoạt hình" };
+        var comedy = new Genre { Name = "Comedy" };
+        var action = new Genre { Name = "Action" };
+        var animation = new Genre { Name = "Animation" };
         context.Genres.AddRange(comedy, action, animation);
         context.Movies.AddRange(
             new Movie { Title = "Ghostbusters", ReleaseDate = new DateTime(1984, 6, 8), Duration = 105, Genre = comedy },

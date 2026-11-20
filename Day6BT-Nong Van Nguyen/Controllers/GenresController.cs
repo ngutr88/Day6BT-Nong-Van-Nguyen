@@ -143,7 +143,7 @@ namespace Day6BT_Nong_Van_Nguyen.Controllers
             if (genre == null) return NotFound();
             if (await _context.Movies.AnyAsync(m => m.GenreId == id))
             {
-                ModelState.AddModelError(string.Empty, "Không thể xóa thể loại đang có phim. Hãy chuyển hoặc xóa các phim trước.");
+                ModelState.AddModelError(string.Empty, "Cannot delete a genre that contains movies. Move or delete its movies first.");
                 return View("Delete", genre);
             }
             _context.Genres.Remove(genre);
@@ -153,7 +153,7 @@ namespace Day6BT_Nong_Van_Nguyen.Controllers
             }
             catch (DbUpdateException)
             {
-                ModelState.AddModelError(string.Empty, "Không thể xóa thể loại. Có thể vừa có phim được thêm vào thể loại này.");
+                ModelState.AddModelError(string.Empty, "Cannot delete this genre. A movie may have just been added to it.");
                 return View("Delete", genre);
             }
             return RedirectToAction(nameof(Index));

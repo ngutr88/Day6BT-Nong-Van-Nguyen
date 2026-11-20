@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Day6BT_Nong_Van_Nguyen</RootNamespace>
+    <UserSecretsId>22a9ce33-2da8-4c86-b03e-2c50a833efec</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

@@ -67,7 +67,7 @@ namespace Day6BT_Nong_Van_Nguyen.Controllers
         public async Task<IActionResult> Create([Bind("Title,ReleaseDate,Duration,GenreId")] Movie movie)
         {
             if (!await _context.Genres.AnyAsync(g => g.Id == movie.GenreId))
-                ModelState.AddModelError(nameof(Movie.GenreId), "Thể loại không tồn tại. Vui lòng chọn lại.");
+                ModelState.AddModelError(nameof(Movie.GenreId), "The selected genre does not exist. Please select another genre.");
             if (ModelState.IsValid)
             {
                 _context.Add(movie);
@@ -108,7 +108,7 @@ namespace Day6BT_Nong_Van_Nguyen.Controllers
             }
 
             if (!await _context.Genres.AnyAsync(g => g.Id == movie.GenreId))
-                ModelState.AddModelError(nameof(Movie.GenreId), "Thể loại không tồn tại. Vui lòng chọn lại.");
+                ModelState.AddModelError(nameof(Movie.GenreId), "The selected genre does not exist. Please select another genre.");
             if (ModelState.IsValid)
             {
                 try
